@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="The Itaewon Book Club meets Sundays at 4pm at Vatos Itaewon, Seoul. What we are reading next, and how to join.">
+<meta name="description" content="The Itaewon Book Club meets Sundays at 4pm at The Craic House in Itaewon, Seoul. What we are reading next, and how to join.">
 <meta name="theme-color" content="#0a0a0b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%97%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://itaewon.club/">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://itaewon.club/">
 <meta property="og:title" content="Itaewon Book Club">
-<meta property="og:description" content="The Itaewon Book Club meets Sundays at 4pm at Vatos Itaewon, Seoul. What we are reading next, and how to join.">
+<meta property="og:description" content="The Itaewon Book Club meets Sundays at 4pm at The Craic House in Itaewon, Seoul. What we are reading next, and how to join.">
 <meta name="twitter:card" content="summary">
 <title>Itaewon Book Club</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://covers.openlibrary.org" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap">
 
 <style>
   /* ------------------------------------------------------------------
@@ -84,6 +86,76 @@
 
   .btn:hover { opacity: .84; }
   .btn:active { transform: translateY(1px); }
+
+  /* ---------------- impersonation notice ----------------
+     Sits above everything else. Closable, and stays closed for 30 days
+     in that visitor's browser; then it comes back once as a reminder. */
+
+  .notice {
+    background: #161618;
+    border-bottom: 1px solid var(--line2);
+  }
+
+  .notice .w {
+    position: relative;
+    padding-block: 26px 28px;
+    padding-right: 96px;
+  }
+
+  .notice .tag {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--soft);
+  }
+
+  .notice .say-en {
+    font-family: var(--d);
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.3;
+    font-style: italic;
+    margin-top: 8px;
+    max-width: 30em;
+    text-wrap: pretty;
+  }
+
+  .notice .say-en strong { font-weight: 500; }
+
+  .notice .say-ko {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--soft);
+    margin-top: 10px;
+    word-break: keep-all;
+  }
+
+  .notice .ask {
+    font-size: 14px;
+    color: var(--soft);
+    margin-top: 14px;
+  }
+
+  .notice .ask a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--soft); }
+  .notice .ask a:hover { border-color: var(--ink); }
+
+  .notice .x {
+    position: absolute;
+    top: 22px;
+    right: 40px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line2);
+    background: none;
+    color: var(--soft);
+    font-size: 13px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color .3s var(--ease), color .3s var(--ease);
+  }
+
+  .notice .x:hover { border-color: var(--soft); color: var(--ink); }
 
   /* ---------------- slider ---------------- */
 
@@ -249,7 +321,19 @@
 
   .base .org .r { font-family: var(--m); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--faint); }
   .base .org .who { font-family: var(--d); font-size: 31px; line-height: 1.1; margin-top: 9px; }
-  .base .org .blank { margin-top: 12px; height: 16px; width: 220px; border-bottom: 1px dashed var(--line2); }
+  .base .org .mail {
+    display: inline-block;
+    margin-top: 14px;
+    padding-bottom: 3px;
+    font-family: var(--m);
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line2);
+    transition: color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .base .org .mail:hover { color: var(--ink); border-color: var(--accent); }
 
   footer {
     margin-top: 54px;
@@ -285,6 +369,8 @@
 
   @media (max-width: 620px) {
     .w { padding-inline: 20px; }
+    .notice .w { padding-block: 20px 22px; padding-right: 64px; }
+    .notice .x { top: 16px; right: 16px; }
     .strip { gap: 16px; height: 400px; }
     .bk[data-pos="near"] { width: 96px; height: 144px; }
     .bk[data-pos="near"] .plate { padding: 12px 11px; }
@@ -310,6 +396,25 @@
 </style>
 </head>
 <body>
+<aside class="notice" id="notice" aria-label="Impersonation warning">
+  <div class="w">
+    <p class="tag">Beware of impersonators</p>
+    <p class="say-en">Itaewon Book Club will <strong>never</strong> contact you first to ask for money or promotion. If someone does, they are impersonating us.</p>
+    <p class="say-ko" lang="ko">이태원 북클럽은 먼저 연락해 금전이나 프로모션을 요구하지 않습니다. 그런 연락은 사칭입니다.</p>
+    <p class="ask">Not sure? Ask us at <a data-u="contact" data-d="itaewon.club"></a></p>
+    <button class="x" type="button" id="notice-close" aria-label="Close this notice">&#10005;</button>
+  </div>
+</aside>
+<script>
+  /* hide the notice before first paint if this visitor closed it recently */
+  (function () {
+    try {
+      var t = +window.localStorage.getItem("ibc.notice.closed");
+      if (t && Date.now() - t < 30 * 864e5) { document.getElementById("notice").hidden = true; }
+    } catch (e) { /* storage blocked: just show it */ }
+  }());
+</script>
+
 <div class="w">
 
   <header>
@@ -339,16 +444,16 @@
   </div>
 
   <div class="base">
-    <p class="say">Everyone's welcome.<br>Read what you can.<br>Say what you felt.</p>
+    <p class="say">Everyone's welcome.<br>Say what you think.<br>Let others finish.</p>
     <div class="org">
       <p class="r">Organiser</p>
       <p class="who">Christopher Jones</p>
-      <div class="blank"></div>
+      <a class="mail" data-u="contact" data-d="itaewon.club"></a>
     </div>
   </div>
 
   <footer>
-    <span>Site by Taehwan, taehwan19931213@gmail.com</span>
+    <span>Site by Taehwan · <a data-u="contact" data-d="itaewon.club"></a></span>
     <span><a href="https://www.meetup.com/itaewon-book-club/" target="_blank" rel="noopener">meetup.com/itaewon-book-club</a></span>
   </footer>
 </div>
@@ -358,13 +463,24 @@
     "use strict";
 
     var MEETUP = "https://www.meetup.com/itaewon-book-club/";
-    var VENUE = "Vatos Itaewon";
-    var VENUE_MAP = "https://www.google.com/maps/search/?api=1&query=Vatos+Urban+Tacos+Itaewon";
+    var VENUE = "The Craic House";
+    var VENUE_MAP = "https://www.google.com/maps/search/?api=1&query=The+Craic+House+Itaewon+Seoul";
+
+    /* The club address is put together here instead of being written into
+       the HTML, so bots that harvest addresses from page source miss it.
+       Visitors see and click a normal mailto link. */
+    Array.prototype.forEach.call(document.querySelectorAll("a[data-u]"), function (a) {
+      var addr = a.getAttribute("data-u") + "@" + a.getAttribute("data-d");
+      a.href = "mailto:" + addr;
+      a.textContent = addr;
+    });
 
     /* ------------------------------------------------------------------
        THE ONLY THING YOU NEED TO EDIT.
 
        Add a meeting by appending to this list, oldest first.
+       `url` is that meeting's Meetup event page; the RSVP button opens it.
+       Leave it out and the button falls back to the group page.
        `cover` is optional and is tried in this order:
          1. whatever you put in `cover`
          2. an Open Library cover looked up from title and author
@@ -381,6 +497,7 @@
         date: "2026-07-19",
         title: "The Odyssey",
         author: "Homer",
+        url: "https://www.meetup.com/itaewon-book-club/events/312710730/",
         cover: "",
         tint: "#d9d2c0", on: "#23211c"
       },
@@ -388,6 +505,7 @@
         date: "2026-08-16",
         title: "Resistance, Rebellion, and Death",
         author: "Albert Camus",
+        url: "https://www.meetup.com/itaewon-book-club/events/313035573/",
         cover: "",
         tint: "#8c2f27", on: "#f4e7d8"
       },
@@ -395,6 +513,7 @@
         date: "2026-09-13",
         title: "Oblomov",
         author: "Ivan Goncharov",
+        url: "https://www.meetup.com/itaewon-book-club/events/314704961/",
         cover: "",
         tint: "#16242b", on: "#eae4d8"
       },
@@ -402,6 +521,7 @@
         date: "2026-10-04",
         title: "I Am Dynamite!",
         author: "Sue Prideaux",
+        url: "https://www.meetup.com/itaewon-book-club/events/314705128/",
         cover: "",
         tint: "#b5471f", on: "#fbf0e2"
       },
@@ -409,6 +529,7 @@
         date: "2026-10-25",
         title: "The Last of the Just",
         author: "Andre Schwarz-Bart",
+        url: "https://www.meetup.com/itaewon-book-club/events/315102463/",
         cover: "",
         tint: "#e6e1d4", on: "#2b2a26"
       },
@@ -416,8 +537,33 @@
         date: "2026-11-15",
         title: "American Prometheus",
         author: "Kai Bird and Martin J. Sherwin",
+        url: "https://www.meetup.com/itaewon-book-club/events/315843669/",
         cover: "",
         tint: "#1e2c38", on: "#e6ebef"
+      },
+      {
+        date: "2026-12-13",
+        title: "How the World Made the West",
+        author: "Josephine Quinn",
+        url: "https://www.meetup.com/itaewon-book-club/events/316457340/",
+        cover: "",
+        tint: "#c49a3c", on: "#1d170b"
+      },
+      {
+        date: "2027-01-10",
+        title: "Life and Fate",
+        author: "Vasily Grossman",
+        url: "https://www.meetup.com/itaewon-book-club/events/316539397/",
+        cover: "",
+        tint: "#5b1e1a", on: "#f3e7d7"
+      },
+      {
+        date: "2027-01-31",
+        title: "The Jakarta Method",
+        author: "Vincent Bevins",
+        url: "https://www.meetup.com/itaewon-book-club/events/316199266/",
+        cover: "",
+        tint: "#2f3b2c", on: "#ece7da"
       }
     ];
 
@@ -434,6 +580,13 @@
         try { window.localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* blocked */ }
       }
     };
+
+    /* closing the impersonation notice */
+    var notice = document.getElementById("notice");
+    document.getElementById("notice-close").addEventListener("click", function () {
+      notice.hidden = true;
+      STORE.set("ibc.notice.closed", Date.now());
+    });
 
     function at(iso) {
       var p = iso.split("-");
@@ -631,7 +784,7 @@
       actsEl.textContent = "";
       if (!isPast) {
         var rsvp = el("a", "btn", "RSVP");
-        rsvp.href = MEETUP;
+        rsvp.href = book.url || MEETUP;
         rsvp.target = "_blank";
         rsvp.rel = "noopener";
         actsEl.appendChild(rsvp);
