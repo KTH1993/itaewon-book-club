@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="The Itaewon Book Club meets Sundays at 4pm at The Craic House in Itaewon, Seoul. What we are reading next, and how to join.">
+<meta name="description" content="The Itaewon Book Club meets Sundays at 4pm at Vatos Tacos in Itaewon, Seoul. What we are reading next, and how to join.">
 <meta name="theme-color" content="#0a0a0b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%97%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://itaewon.club/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://itaewon.club/">
 <meta property="og:title" content="Itaewon Book Club">
-<meta property="og:description" content="The Itaewon Book Club meets Sundays at 4pm at The Craic House in Itaewon, Seoul. What we are reading next, and how to join.">
+<meta property="og:description" content="The Itaewon Book Club meets Sundays at 4pm at Vatos Tacos in Itaewon, Seoul. What we are reading next, and how to join.">
 <meta name="twitter:card" content="summary">
 <title>Itaewon Book Club</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -253,6 +253,11 @@
   .meta .sub a { color: var(--soft); text-decoration: none; border-bottom: 1px solid var(--line2); }
   .meta .sub a:hover { color: var(--ink); border-color: var(--soft); }
 
+  /* the venue opens Google Maps, so make it look clickable */
+  .meta .sub a.place { color: var(--ink); border-bottom-color: var(--soft); }
+  .meta .sub a.place::after { content: " \2197"; }
+  .meta .sub a.place:hover { border-color: var(--ink); }
+
   .meta .acts { margin-top: 26px; min-height: 38px; }
 
   /* ---------------- timeline ---------------- */
@@ -463,8 +468,10 @@
     "use strict";
 
     var MEETUP = "https://www.meetup.com/itaewon-book-club/";
-    var VENUE = "The Craic House";
-    var VENUE_MAP = "https://www.google.com/maps/search/?api=1&query=The+Craic+House+Itaewon+Seoul";
+    /* Every meeting is at Vatos. This is fixed on purpose: it doesn't
+       follow whatever venue a Meetup event happens to list. */
+    var VENUE = "Vatos Tacos";
+    var VENUE_MAP = "https://www.google.com/maps/search/?api=1&query=Vatos+Urban+Tacos+Itaewon";
 
     /* The club address is put together here instead of being written into
        the HTML, so bots that harvest addresses from page source miss it.
@@ -774,8 +781,9 @@
         subEl.appendChild(document.createTextNode(book.title + ", " + book.author));
       } else {
         subEl.appendChild(document.createTextNode("4:00 pm at "));
-        var a = el("a", null, VENUE);
+        var a = el("a", "place", VENUE);
         a.href = VENUE_MAP;
+        a.title = "Open " + VENUE + " in Google Maps";
         a.target = "_blank";
         a.rel = "noopener";
         subEl.appendChild(a);

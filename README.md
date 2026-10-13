@@ -61,8 +61,9 @@ current between edits.
 
 Two other values in the same script:
 
-- `VENUE` / `VENUE_MAP` — where upcoming meetings happen (currently
-  The Craic House, Itaewon) and the map link. Change both if the venue moves.
+- `VENUE` / `VENUE_MAP` — where every meeting happens and the map link.
+  It's fixed to Vatos Tacos in Itaewon for all meetings, whatever an
+  individual Meetup event lists. Change both only if the club really moves.
 - `MEETUP` — the group URL, used by "Join on Meetup" and as the RSVP fallback.
 
 ## Impersonation notice
